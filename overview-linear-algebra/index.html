@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+      <title></title>
+
+      
+
+      
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+          
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+
+          <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+          <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/mathtex-script-type.min.js" integrity="sha384-zWYbd0NBwgTsgIdFKVprSfTh1mbMPe5Hz1X3yY4Sd1h/K1cQoUe36OGwAGz/PcDy" crossorigin="anonymous"></script>
+              
+          <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+                  onload="renderMathInElement(document.body);"></script>
+              
+          
+      
+
+
+      
+          <link rel="stylesheet" href="https://joao-vitor-sr.github.io/site.css">
+      
+
+      
+    <meta name="description" content="joao-vitor-sr blog"/>
+    <meta name="keywords" content="Math,Programming,Ranting"/>
+    <meta name="google-site-verification" content="85P2PTy5fvXJF9Rg85x8y_JOtPW0HTq6E8fUwY2r9vc" />
+
+    </head>
+
+    <body class="hack dark main container">
+        
+    
+        
+                
+                    <header>
+                        <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+                        
+                            <a itemprop="url"
+                               class=""
+                               href="https:&#x2F;&#x2F;joao-vitor-sr.github.io">
+                                <span itemprop="name">Home</span></a>
+                        
+                        </nav>
+                    </header>
+                
+            
+    
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="headline">Overview over linear algebra</h1>
+        <span class="muted">
+    <svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <circle cx="16" cy="16" r="14"/>
+        <path d="M16 8 L16 16 20 20"/>
+    </svg>
+    <span>10 minute read</span>
+    <svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
+    </svg>
+
+    
+</span>
+    </header>
+    <div itemprop="articleBody">
+      <p>In recent years, linear models have become quite famous. And have assumed very
+important roles in almost all the physical and social sciences, and as
+expected, this has stimulated the growth in the interest in linear algebra.</p>
+<p>The article that you're reading has the intent that even if you don't
+understand anything about linear algebra, at least understand what it's and
+why it's useful. I don't intend to explain all computations and proofs behind
+the models, so if you're searching for something more complete, this is not
+the place for you (good luck with your search 😀)</p>
+<h2 id="vectors">Vectors</h2>
+<p>We can say that the foundation of linear models is the vector, so it's good to
+understand what it's and why it's so important.</p>
+<p>In the mathematical world, we have three main distinct approaches to what's a
+vector. There is the computer science perspective, the physics, and the purely
+mathematical one.</p>
+<h3 id="physics-perspective">Physics perspective</h3>
+<p>From the perspective of physics, a vector is an arrow in space. That contains
+two properties magnitude, and direction, and its dimension can be
+two-dimensional or three (on mathematical computation, it's possible to have
+vectors on the fourth dimension, but since we cannot understand this dimension
+at its full potential, the definition of this dimension is purely
+mathematical).</p>
+<p>Many physical quantities are vectors, and it's interesting how the same rule
+of operations applies to all of them.</p>
+<p>Generally, a vector may originate from any point in space and end at any other.</p>
+<h3 id="computer-science-perspective">Computer science perspective</h3>
+<p>In this perspective, vectors are a list of numbers with a length of n (this
+represents the size of the list). The order matters.</p>
+<p>$$
+\begin{pmatrix}
+1 &amp; 3 &amp; 5
+\end{pmatrix} \mathrel{\char`≠} \begin{pmatrix}
+3 &amp; 1 &amp; 5
+\end{pmatrix}
+$$</p>
+<h3 id="mathematical-perspective">Mathematical Perspective</h3>
+<p>And finally, we have the mathematical approach, which remembers the physical
+notion, but with some differences.</p>
+<p>First of all, the vectors are not dependent on space, so it's possible to have
+any n-dimensional vector without limits, and it's also similar to the CS
+perspective, that it's a list of numbers.</p>
+<h2 id="matrices">Matrices</h2>
+<p>With the definition of the vector clear, we can keep forward to the matrix
+definition.</p>
+<p>This definition provides a powerful tool. A matrix is a rectangular array of
+numbers arranged into rows and columns.</p>
+<p>$$
+\begin{bmatrix}
+a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,n} \\
+a_{2,1} &amp; a_{2,2} &amp; \cdots &amp; a_{2,n} \\
+\vdots &amp; &amp; &amp; \vdots \\
+a_{m,1} &amp; a_{m,2} &amp; \cdots &amp; a_{m,n}
+\end{bmatrix}
+$$</p>
+<p>It's an m by n (it's written as m x n) matrix. Matrices don't have numerical
+values. Instead, it's a way to manage tables of numbers. A double subscript
+represents any one of its elements. By convention, the first subscript is the
+row, and the second one is the column, so the following equation represents a
+value from matrix A, that's at row 1 and column 2</p>
+<p>$$
+a_{1,2}
+$$</p>
+<h3 id="examples">Examples</h3>
+<p>Here is a small colection of matrices
+$$
+\begin{bmatrix}
+1 &amp; 0 \\
+0 &amp; 1
+\end{bmatrix} \begin{bmatrix}
+a_{1,1} &amp; a_{1,2} \\
+a_{2,1} &amp; a_{2,2}
+\end{bmatrix} \begin{bmatrix}
+a &amp; b \\
+c &amp; d
+\end{bmatrix} \begin{bmatrix}
+1 &amp; 2 &amp; 4 \\
+\lambda &amp; \beta &amp; \alpha
+\end{bmatrix}
+$$</p>
+<p>It's possible to have different numbers of rows and columns (the
+fourth matrix is an example, with two rows and three columns)</p>
+<h2 id="operations">Operations</h2>
+<p>Even if a matrix is just a collection of numbers (arrays/tables) still is
+possible to do operations, most of which will be similar to the traditional
+ones. However, some require a &quot;special&quot; focus since they can be different.</p>
+<h3 id="equality">Equality</h3>
+<p>A matrix is said to be equal only if all elements are equal
+(this applies to the size too).</p>
+<p><em>Examples:</em></p>
+<p>$$
+A = \begin{bmatrix}
+1 &amp; 0 \\
+0 &amp; 1
+\end{bmatrix}, B = \begin{bmatrix}
+1 &amp; 1 \\
+0 &amp; 0
+\end{bmatrix}
+$$
+A is different from B, since the elements values are different</p>
+<p>$$
+A = \begin{bmatrix}
+1 &amp; 4 &amp; 7 \\
+8 &amp; 1 &amp; 2
+\end{bmatrix}, B = \begin{bmatrix}
+5 &amp; \lambda \\
+\beta &amp; 1
+\end{bmatrix}
+$$
+They are not equal, since the size is different, and therefore values are also</p>
+<p>$$
+A = \begin{bmatrix}
+2 &amp; 8 \\
+9 &amp; 1
+\end{bmatrix}, B = \begin{bmatrix}
+2 &amp; 8 \\
+9 &amp; 1
+\end{bmatrix}
+$$
+Here the matrices are equal, because the size is the same, and all elemnts have
+the same value</p>
+<h3 id="multiplication-by-scalar">Multiplication by scalar</h3>
+<p>Given a matrix \(A\) and a scalar \(\lambda\) the product of \(\lambda\)
+and \(A\) written \(\lambda A \) is
+$$
+\lambda A = \begin{bmatrix}
+\lambda a_{1,1} &amp; \cdots &amp; \lambda a_{1,n} \\
+\lambda a_{2,1} &amp; \cdots &amp; \lambda a_{2,n} \\
+\vdots  &amp; &amp; \vdots \\
+\lambda a_{m, 1} &amp; \cdots &amp; \lambda a_{m, n}
+\end{bmatrix}
+$$</p>
+<p>Each element of A is multiplied by the scalar (in this case \(\lambda\)), and
+the product will be a matrix m X n</p>
+<p><em>Examples:</em></p>
+<p>$$
+\begin{aligned}
+\lambda = 2, &amp;&amp; A = \begin{bmatrix}
+4 &amp; 7 \\
+8 &amp; 9
+\end{bmatrix} &amp;&amp; \lambda A = \begin{bmatrix}
+8 &amp; 14 \\
+16 &amp; 18
+\end{bmatrix} \\\\
+\lambda = -4, &amp;&amp; A = \begin{bmatrix}
+1 &amp; 2 \\
+0 &amp; 1
+\end{bmatrix}, &amp;&amp; \lambda A = \begin{bmatrix}
+-4 &amp; -8 \\
+0 &amp; -4
+\end{bmatrix}
+\end{aligned}
+$$</p>
+<h3 id="addition">Addition</h3>
+<p>The sum C of a matrix A having m rows and n columns and a matrix B having m rows
+and n columns is a matrix having m rows and n columns.</p>
+<p>In addition, there's a sum in each element</p>
+<p><em>Examples:</em></p>
+<p>The sum</p>
+<p>$$
+C = A + B
+$$</p>
+<p>Expands to</p>
+<p>$$
+\begin{aligned}
+C &amp;= \begin{bmatrix}
+c_{1,1} &amp; \cdots &amp; c_{1,n} \\
+\vdots &amp; &amp; \vdots \\
+c_{m,1} &amp; \cdots &amp; c_{m,n}
+\end{bmatrix} = \begin{bmatrix}
+a_{1,1} &amp; \cdots &amp; a_{1,n} \\
+\vdots &amp; &amp; \vdots \\
+a_{m,1} &amp; \cdots &amp; a_{m,n}
+\end{bmatrix} + \begin{bmatrix}
+b_{1,1} &amp; \cdots &amp; b_{1,n} \\
+\vdots &amp; &amp; \vdots \\
+b_{m,1} &amp; \cdots &amp; b_{m,n}
+\end{bmatrix} \\
+&amp;= \begin{bmatrix}
+a_{1,1} + b_{1,1} &amp; \cdots &amp; a_{1,n} + b_{1,n} \\
+\vdots &amp; &amp; \vdots \\
+a_{m,1} + b_{m,1} &amp; \cdots &amp; a_{m,n} + b_{m,n}
+\end{bmatrix}
+\end{aligned}
+$$</p>
+<p>If the number of rows or columns is different between the matrices, the
+operation is said to be undefined.</p>
+<p>Note that the addition is commutative (which in linear algebra is not always
+true for all operations)</p>
+<p>$$
+A + B = B + A,
+A + (B + C) = (A + B) + C = A + B + C
+$$</p>
+<h3 id="subtraction">Subtraction</h3>
+<p>The subtraction is defined to be the sum of two matrices, but the matrix that
+is subtracting is pre-multiplied by -1, as an example:</p>
+<p>$$
+A - B = A + (-1) B
+$$</p>
+<h2 id="matrix-multiplication">Matrix multiplication</h2>
+<p>Think of a way to multiply two matrices. You can try to do something similar
+to sum, multiplying each element with its equivalent on the other matrix.</p>
+<p>So try to ponder a little and think of a way to multiply two different
+matrices, even when the rows and columns lengths are equal.</p>
+<p>Because of this, matrix multiplication is not equal to &quot;traditional&quot; matrix
+operations. (this is not the unique reason)</p>
+<p>So the operation of the multiplication is in this way.</p>
+<h3 id="operation">Operation</h3>
+<p>The operation is related to the row of matrix A and the column of
+matrix B, as an example:</p>
+<p>$$
+A = \begin{bmatrix}
+1 &amp; 3 \\
+2 &amp; 4
+\end{bmatrix}, B = \begin{bmatrix}
+2 &amp; 1 \\
+3 &amp; 5
+\end{bmatrix}, C = \begin{bmatrix}
+1(2) + 3(3) &amp; 1(1) + 3(5) \\
+2(2) + 4(3) &amp; 2(1) + 4(5)
+\end{bmatrix} = \begin{bmatrix}
+11 &amp; 16 \\
+16 &amp; 22
+\end{bmatrix}
+$$</p>
+<p>As you can see, the first row multiplies the second column, and finally, there
+is a sum of the elements.</p>
+<p>$$
+A = \begin{bmatrix}
+3 &amp; 2 \\
+6 &amp; 1
+\end{bmatrix}, B = \begin{bmatrix}
+4 \\
+5
+\end{bmatrix}, C = \begin{bmatrix}
+3(4) + 2(5) \\
+6(4) + 1(5)
+\end{bmatrix} = \begin{bmatrix}
+22 \\
+29
+\end{bmatrix}
+$$</p>
+<p>The matrix C is m X r when A is m X n, and B k X r. The resulting matrix has
+the same number of rows as the first matrix and the same number of columns as
+the second one.</p>
+<p>Remember that the multiplication is not always commutative since not always
+the rules of the rows and columns sizes are applied, see:</p>
+<p>$$
+A = \begin{bmatrix}
+2 &amp; 1 \\
+3 &amp; 1
+\end{bmatrix}, B = \begin{bmatrix}
+2 \\
+1
+\end{bmatrix}, AB = \begin{bmatrix}
+5 \\
+7
+\end{bmatrix}
+$$</p>
+<p>However, BA is undefined since the number of columns in B is not the same as
+the number of rows in A</p>
+<h2 id="linear-dependence">Linear dependence</h2>
+<p>Linear dependence or independence are properties of the set of vectors, not the
+individual vectors.</p>
+<p>A set is said to be a dependency, \( (a_1, \cdots, a_m) \) from \(E^n\)
+is said to be dependent if there is some scalar (not all zeros), that</p>
+<p>$$
+\lambda_1 a_1 + \lambda_2 a_2 + \cdots + \lambda_m a_m = 0
+$$</p>
+<p>or in other words, there is a set (in En)En) that when multiplied by a scalar.</p>
+<h2 id="basis-vectors">Basis Vectors</h2>
+<p>Until now, we were working with vector coordinates, but instead, think of each
+coordinate as a scalar and think about how they change the space. The number
+that those scalars modify is the basis vector.</p>
+<p>With this in mind, think of vector coordinates as scalars that modify the
+basis vectors.</p>
+<p>With this definition, it's possible to have a different basis. And at the same
+time, still, be possible to reach all points in space just by changing the
+scalars.</p>
+<h2 id="linear-transformations">Linear transformations</h2>
+<p>It is not uncommon to apply transformations in a set of values. However,
+linear models use a special kind of transformation called linear.</p>
+<p>An example, \(Y = Ax\) is a linear transformation, that moves x points to
+other points in space.</p>
+<p>It's possible to say the values of Y are the same as x, but after that, matrix
+A transformed the points on x.</p>
+<p>$$
+\begin{aligned}
+y_1 = Ax_1, &amp; &amp; y_2 = Ax_2 \\
+y_1 + y_2 &amp;= Ax_1 + Ax_2 &amp;= A(x_1 + x_2)
+\end{aligned}
+$$</p>
+<p>The technical definition is.</p>
+<p>A linear transformation T on the space \(E^n\) is a correspondence that maps
+each vector x of \(E^n\) into a vector T(x) of \(E^m\), such that</p>
+<p>$$
+T({\lambda}_1 x_1 + {\lambda}_2 + x_2) = {\lambda}_1 T(x_1) + {\lambda}_2T(x_2)
+$$</p>
+<p>This equation preserves addition and multiplication by a scalar</p>
+<p>Any matrix transformation is a linear transformation since all rules apply to
+matrices</p>
+<p><em>Examples:</em></p>
+<p>Linear:
+$$
+T({\lambda}_1 x_1 + {\lambda}_2 x_2) = a({\lambda}_1 x_1 + {\lambda}_2 x_2) =
+{\lambda}_1(ax_1) + {\lambda}_2(ax_2) = {\lambda}_1 T(x_1) + {\lambda}_2 T(x_2)
+$$</p>
+<p>It's linear, but the following one is not linear.</p>
+<p>$$
+T(\lambda_1 x_1 + \lambda_2 x_2) = a(\lambda_1 x_1 + \lambda_2 x_2)^2 =
+a(\lambda_1 x_1)^2 + a(\lambda_2 x_2)^2 + 2a\lambda_1 \lambda_2 x_1 x_2
+$$</p>
+<p>So this equation is not linear and therefore is not a valid transformation.</p>
+<h2 id="determinant">Determinant</h2>
+<p>A determinant is defined to be the number computed from
+the following sum. Involving the \(n^2\) elements in A</p>
+<p>$$
+|A| = \sum (\pm) a_{1,i}, a_{2,j}, \cdots, a_{n,r}
+$$</p>
+<p>A sum sign is added if \( (i,j,\cdots,r) \) is an even permutation of
+\( (1,2,\cdots,n) \) and a minus if it's an odd permutation.</p>
+<p>In other words, a determinant can the numerical representation of a matrix,
+representing how much this matrix modifies the space. (I will not cover the
+computation)</p>
+<h2 id="rank">Rank</h2>
+<p>The rank is defined to be the dimension of the matrix, so a 2 X 2 matrix, that
+when represented graphically, the result fills the n dimension.</p>
+<p>It's the maximum number of linearly independent columns in A</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>As you can see, linear algebra is a very deep branch of mathematics and has
+many implementations in the sciences nowadays.</p>
+
+    </div>
+
+    
+        <footer>
+            <hr>
+            <p>
+                
+                    Published by João Vitor Silveira Ribeiro
+                
+                
+                
+            </p>
+            
+            
+        </footer>
+    
+</article>
+
+
+    </body>
+
+</html>
